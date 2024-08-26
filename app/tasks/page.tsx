@@ -1,12 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { TambahTask } from "./widgets/tambah-task";
+import { TambahTask } from "../widgets/tambah-task";
 import { useEffect, useState } from "react";
 import { Delete, Edit, Edit2, Trash } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { HapusTask } from "./widgets/delete-task";
-import ThemeToggle from "./widgets/toggle-theme";
-import { EditTask } from "./widgets/edit-task";
+import { HapusTask } from "../widgets/delete-task";
+import ThemeToggle from "../widgets/toggle-theme";
+import { EditTask } from "../widgets/edit-task";
 import clsx from "clsx";
 
 export interface ITask {
@@ -17,7 +17,7 @@ export interface ITask {
   tglupdate: Date;
 }
 
-export default function Home() {
+export default function Task() {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const fetchTasks = async () => {
     const response = await fetch("/api");

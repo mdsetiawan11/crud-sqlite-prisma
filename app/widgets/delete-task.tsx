@@ -80,7 +80,7 @@ export function HapusTask({
             variant="outline"
             onClick={() => setOpen(false)}
           >
-            Batal
+            Cancel
           </Button>
           <Button
             disabled={isLoading}
