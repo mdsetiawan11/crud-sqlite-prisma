@@ -70,8 +70,8 @@ export function HapusTask({
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Hapus</DialogTitle>
-          <DialogDescription>Apakah kamu yakin?</DialogDescription>
+          <DialogTitle>Delete</DialogTitle>
+          <DialogDescription>Are you sure?</DialogDescription>
         </DialogHeader>
 
         <DialogFooter>
@@ -87,7 +87,7 @@ export function HapusTask({
             type="submit"
             onClick={() => deletetask()}
           >
-            {isLoading ? "Memuat.." : "Ya"}
+            {isLoading ? "Loading.." : "Yes"}
           </Button>
         </DialogFooter>
       </DialogContent>
