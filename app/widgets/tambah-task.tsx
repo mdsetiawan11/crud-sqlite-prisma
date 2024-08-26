@@ -84,7 +84,7 @@ export function TambahTask({ onTaskAdded }: { onTaskAdded: () => void }) {
       }}
     >
       <DrawerTrigger asChild>
-        <Button onClick={() => setIsOpen(true)} className="min-w-[50vh]">
+        <Button onClick={() => setIsOpen(true)} className="w-20">
           Add Task
         </Button>
       </DrawerTrigger>

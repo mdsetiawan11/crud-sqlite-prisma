@@ -8,6 +8,8 @@ import { HapusTask } from "../widgets/delete-task";
 import ThemeToggle from "../widgets/toggle-theme";
 import { EditTask } from "../widgets/edit-task";
 import clsx from "clsx";
+import { DataTable } from "./data-table";
+import { columns } from "./columns";
 
 export interface ITask {
   id: string;
@@ -30,49 +32,16 @@ export default function Task() {
   }, []);
 
   return (
-    <div className="min-w-screen p-3 flex flex-col items-center gap-4 mx-auto">
-      <ThemeToggle />
-      <div className="min-h-10 md:w-full sm:w-[425px] flex justify-center items-center mx-auto">
-        <TambahTask onTaskAdded={fetchTasks} />
-      </div>
+    <div className="p-4 flex flex-col gap-4">
+      <TambahTask onTaskAdded={fetchTasks} />
 
-      <ul className="flex flex-col gap-y-2 items-center w-full">
-        {tasks.map((task) => (
-          <li key={task.id} className="w-[75vh] p-2 border rounded shadow">
-            <div className="flex flex-row justify-between items-center">
-              <div className="flex flex-col">
-                <div className="flex justify-start gap-2">
-                  <span className="font-bold">{task.nama}</span>
-                </div>
-
-                <div className="text-sm text-gray-600">
-                  <Badge
-                    variant={
-                      task.status == "new"
-                        ? "secondary"
-                        : task.status == "doing"
-                        ? "default"
-                        : "success"
-                    }
-                  >
-                    {task.status}
-                  </Badge>
-                  <p>
-                    Created At: {new Date(task.tglinput).toLocaleDateString()}
-                  </p>
-                  <p>
-                    Updated At: {new Date(task.tglupdate).toLocaleDateString()}
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-row gap-1">
-                <EditTask id={task.id} onTaskEdited={fetchTasks} />
-                <HapusTask id={task.id} onTaskDeleted={fetchTasks} />
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <DataTable
+        columns={columns({
+          onTaskEdited: fetchTasks,
+          onTaskDeleted: fetchTasks,
+        })}
+        data={tasks}
+      />
     </div>
   );
 }

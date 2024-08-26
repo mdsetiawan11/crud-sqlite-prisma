@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SidebarMenu } from "./widgets/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import ThemeToggle from "./widgets/toggle-theme";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
         >
           <TooltipProvider>
             <SidebarMenu children={children} />
+            <ThemeToggle />
           </TooltipProvider>
         </ThemeProvider>
         <Toaster />
